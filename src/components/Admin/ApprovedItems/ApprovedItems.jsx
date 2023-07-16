@@ -14,7 +14,7 @@ const ApprovedItems = () => {
     const [items, setItems] = useState([]);
     useEffect(() => {
         const fetchItems = () =>{
-            Axios.post(`http://${ip()}/api/admin/sort`,{
+            Axios.post(`${ip()}/api/admin/sort`,{
                 status: 'approved'
             }).then((response) =>{
                 setItems(response.data.data);
@@ -28,7 +28,7 @@ const ApprovedItems = () => {
     
     const removeItem = (id)=>{
         console.log(id)
-        Axios.delete(`http://${ip()}/api/admin`,{
+        Axios.delete(`${ip()}/api/admin`,{
             headers:{
                 'Content-Type':'application/json'
             },
@@ -44,7 +44,7 @@ const ApprovedItems = () => {
     const searchItems = (e) =>{
         e.preventDefault()
         console.log('search')
-        Axios.post(`http://${ip()}/api/admin/search`,{
+        Axios.post(`${ip()}/api/admin/search`,{
             status: 'approved',
             item_name: itemName
         }).then((response) =>{
@@ -96,7 +96,7 @@ const ApprovedItems = () => {
                     
                     {items
                         ?   items.map((item)=>{
-                                const imgPath = `http://${ip()}/item_image/${item.item_image}`
+                                const imgPath = `${ip()}/item_image/${item.item_image}`
                                 return (
                                     <tr>
                                         <td></td>

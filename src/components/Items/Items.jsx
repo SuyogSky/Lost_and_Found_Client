@@ -15,7 +15,7 @@ const Items = () => {
 
     useEffect(() => {
         const fetchItems = () =>{
-            Axios.get(`http://${ip()}/api/user`).then((response) =>{
+            Axios.get(`${ip()}/api/user`).then((response) =>{
                 setItems(response.data.data);
                 console.log(response.data.data)
             }).then(()=>{
@@ -28,7 +28,7 @@ const Items = () => {
     const [itemName, setItemName] = useState('')
     const searchItems = () =>{
         setLoaded(false)
-        Axios.post(`http://${ip()}/api/user/search`, {
+        Axios.post(`${ip()}/api/user/search`, {
             item_name: itemName
         }).then((response) =>{
             setItems(response.data.data);
@@ -56,7 +56,7 @@ const Items = () => {
 
                     {items
                         ?items.map((item)=>{
-                            const imgPath = `http://${ip()}/item_image/${item.item_image}`
+                            const imgPath = `${ip()}/item_image/${item.item_image}`
                             return (
                                 <div className="item">
                                     <div className="item-image">

@@ -37,7 +37,7 @@ const AddItems = () => {
         formData.append('found_by', foundBy);
         formData.append('item_image',  path);
         console.log(itemName)
-        const response = await Axios.post(`http://${ip()}/api/admin/`, formData, {
+        const response = await Axios.post(`${ip()}/api/admin/`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
         },

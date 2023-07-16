@@ -15,7 +15,7 @@ const ClaimItemForm = ({item_id}) => {
         e.preventDefault()
         setReSend(false)
         console.log('hihi')
-        Axios.post(`http://${ip()}/otp/send`,{
+        Axios.post(`${ip()}/otp/send`,{
             email: email,
             name: name
         }).then((response) =>{
@@ -29,7 +29,7 @@ const ClaimItemForm = ({item_id}) => {
     const verifyOTP = (e)=>{
         e.preventDefault()
         setVerifying(true)
-        Axios.post(`http://${ip()}/otp/verify`,{
+        Axios.post(`${ip()}/otp/verify`,{
             email: email,
             userName: name,
             otp: otp,

@@ -14,7 +14,7 @@ const AdminDashboard = () => {
     const [items, setItems] = useState([]);
     useEffect(() => {
         const fetchItems = () =>{
-            Axios.get(`http://${ip()}/api/admin`).then((response) =>{
+            Axios.get(`${ip()}/api/admin`).then((response) =>{
                 setItems(response.data.data);
                 console.log(response.data.data)
             }).then(()=>{
@@ -26,7 +26,7 @@ const AdminDashboard = () => {
     
     const removeItem = (id)=>{
         console.log(id)
-        Axios.delete(`http://${ip()}/api/admin`,{
+        Axios.delete(`${ip()}/api/admin`,{
             headers:{
                 'Content-Type':'application/json'
             },
@@ -42,7 +42,7 @@ const AdminDashboard = () => {
     const searchItems = (e) =>{
         e.preventDefault()
         console.log('search')
-        Axios.post(`http://${ip()}/api/admin/searchU`,{
+        Axios.post(`${ip()}/api/admin/searchU`,{
             item_name: itemName
         }).then((response) =>{
             setItems(response.data.data);
@@ -93,7 +93,7 @@ const AdminDashboard = () => {
                     
                     {items
                         ?   items.map((item)=>{
-                                const imgPath = `http://${ip()}/item_image/${item.item_image}`
+                                const imgPath = `${ip()}/item_image/${item.item_image}`
                                 return (
                                     <tr>
                                         <td></td>
