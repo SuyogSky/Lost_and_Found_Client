@@ -1,0 +1,60 @@
+.approved-item-details{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    table{
+        // border: 1px solid black;
+        border: none;
+        width: 100%;
+        padding: 0 10%;
+        border-collapse: collapse;
+        th{
+            text-align: start;
+            padding-bottom: 20px;
+            min-width: 100px;
+        }
+        tr:nth-child(even){
+            background: #E0E0E0;
+        }
+        td{
+            height: 60px;
+            min-width: 100px;
+            border: none;
+            img{
+                width: 50px;
+                height: 50px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+            }
+            .buttons{
+                display: flex;
+                gap: 10px;
+                font-size: 20px;
+                .edit-btn{
+                    color:#624DE3;
+                    cursor: pointer;
+                }
+                .delete-btn{
+                    color: #A30D11;
+                    cursor: pointer;
+                }
+            }
+            .claim-status{
+                background-color: #43d64340;
+                padding: 7px 20px;
+                border-radius: 100px;
+                color: #43d643;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                max-width: 150px;
+                svg{
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --pFont: 'Poppins', sans-serif;
+    --mainColor: #624DE3;
+}
+
+@mixin xsm {
+    @media only screen and (max-width: 320px) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media only screen and (max-width: 640px) {
+        @content;
+    }
+}
+
+@mixin btn{
+    @media only screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media only screen and (max-width: 850px) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media only screen and (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media only screen and (max-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin xxl {
+    @media only screen and (max-width: 1536px) {
+        @content;
+    }
+}
