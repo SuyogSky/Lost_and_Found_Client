@@ -61,12 +61,16 @@ const AddItems = () => {
         }
     };
     const selectOption = () => {
-        const first = document.querySelector('#didi1')
+        const first = document.querySelector('#suyog')
         first.click()
     }
     useEffect(() => {
         selectOption()
     }, [])
+
+    const clickOther = () => {
+        document.querySelector('#other').click()
+    }
     return (
         <section className="add-item-form">
             <form action="" onSubmit={(e) => handleSubmit(e)} method="POST" encType="multipart/form-data">
@@ -86,28 +90,31 @@ const AddItems = () => {
                             <label for="">Found By<span>*</span></label><br />
                             <div className="options">
                                 <span>
-                                    <input type="radio" id="didi1" name="found_by" value="didi1" onClick={(e) => { setFoundBy(e.target.value) }} />
-                                    <label for="didi1">Suyog Shakya</label>
+                                    <input type="radio" id="suyog" name="found_by" value="Suyog Shakya" onClick={(e) => { setFoundBy(e.target.value) }} />
+                                    <label for="suyog">Suyog Shakya</label>
                                 </span>
 
                                 <span>
-                                    <input type="radio" id="didi2" name="found_by" value="didi2" onClick={(e) => { setFoundBy(e.target.value) }} />
-                                    <label for="didi2">Aaryan Jha</label>
+                                    <input type="radio" id="aaryan" name="found_by" value="Aaryan Jha" onClick={(e) => { setFoundBy(e.target.value) }} />
+                                    <label for="aaryan">Aaryan Jha</label>
                                 </span>
 
                                 <span>
-                                    <input type="radio" id="didi3" name="found_by" value="didi3" onClick={(e) => { setFoundBy(e.target.value) }} />
-                                    <label for="didi3">Ram Chandra Limbu</label>
+                                    <input type="radio" id="ram" name="found_by" value="Ram Chandra Limbu" onClick={(e) => { setFoundBy(e.target.value) }} />
+                                    <label for="ram">Ram Chandra Limbu</label>
                                 </span>
 
                                 <span>
-                                    <input type="radio" id="didi4" name="found_by" value="didi4" onClick={(e) => { setFoundBy(e.target.value) }} />
-                                    <label for="didi4">Geenesh Acharya</label>
+                                    <input type="radio" id="geenesh" name="found_by" value="Geenesh Acharya" onClick={(e) => { setFoundBy(e.target.value) }} />
+                                    <label for="geenesh">Geenesh Acharya</label>
                                 </span>
 
                                 <span className="other">
                                     <input type="radio" id="other" name="found_by" onClick={(e) => { setFoundBy(otherName) }} />
-                                    <label for="other">Other: <input type="text" name="other_value" onChange={(e) => setOtherName(e.target.value)} /></label>
+                                    <label for="other">Other: <input type="text" name="other_value" onChange={(e) => {
+                                        setOtherName(e.target.value)
+                                        clickOther()
+                                    }} /></label>
                                 </span>
                             </div>
                         </div>
