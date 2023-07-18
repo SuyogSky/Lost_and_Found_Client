@@ -1,32 +1,51 @@
+.unclaimed-items{
+    display: flex;
+    width: 100%;
+    .content{
+        width: 100%;
+    }
+}
 .item-details{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     table{
-        // border: 1px solid black;
         border: none;
         width: 100%;
         padding: 0 10%;
         border-collapse: collapse;
         th{
             text-align: start;
-            padding-bottom: 20px;
-            min-width: 100px;
+            min-width: 40px;
+            height: 60px;
+            font-weight: 600;
+        }
+        tr{
+            height: 80px;
         }
         tr:nth-child(even){
-            background: #E0E0E0;
+            background: rgba(0,0,0,0.05);
         }
         td{
             height: 60px;
-            min-width: 100px;
+            min-width: 40px;
             border: none;
-            img{
-                width: 50px;
+            .image{
                 height: 50px;
-                border-radius: 8px;
+                aspect-ratio: 5/4;
+                overflow: hidden;
                 display: flex;
                 align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                background-color: rgba(0,0,0,0.1);
+                img{
+                    height: 100%;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                }
             }
             .buttons{
                 display: flex;
@@ -46,11 +65,14 @@
                 padding: 10px 20px;
                 border-radius: 100px;
                 color: #D6A243;
-                font-weight: 700;
+                font-weight: 600;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 max-width: 170px;
+                svg{
+                    font-size: 22px;
+                }
             }
         }
     }

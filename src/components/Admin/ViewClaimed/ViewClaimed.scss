@@ -1,43 +1,65 @@
+.claimed-items{
+    display: flex;
+    width: 100%;
+    .content{
+        width: 100%;
+    }
+}
 .claimed-item-details{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     table{
-        // border: 1px solid black;
         border: none;
         width: 100%;
         padding: 0 10%;
         border-collapse: collapse;
         th{
             text-align: start;
-            padding-bottom: 20px;
-            min-width: 100px;
+            min-width: 50px;
+            height: 60px;
+            font-weight: 600;
+        }
+        tr{
+            height: 80px;
         }
         tr:nth-child(even){
-            background: #E0E0E0;
+            background: rgba(0,0,0,0.05);
         }
         td{
             height: 60px;
-            min-width: 100px;
+            min-width: 50px;
             border: none;
-            img{
-                width: 50px;
+            .image{
                 height: 50px;
-                border-radius: 8px;
+                aspect-ratio: 5/4;
+                overflow: hidden;
                 display: flex;
                 align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                background-color: rgba(0,0,0,0.1);
+                img{
+                    height: 100%;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                }
             }
             .buttons{
                 display: flex;
+                align-items: center;
                 gap: 10px;
                 font-size: 20px;
-                .edit-btn{
-                    color:#624DE3;
+                .approve{
+                    color:rgb(0, 194, 0);
+                    font-size: 32px;
                     cursor: pointer;
                 }
-                .delete-btn{
-                    color: #A30D11;
+                .reject{
+                    color: rgb(197, 0, 0);
+                    font-size: 18px;
                     cursor: pointer;
                 }
             }
@@ -46,33 +68,13 @@
                 padding: 10px 20px;
                 border-radius: 100px;
                 color: #D6A243;
-                font-weight: 700;
+                font-weight: 600;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                max-width: 140px;
-            }
-            &.actions{
-                position: relative;
-                .options{
-                    position: absolute;
-                    left: 20px;
-                    top: 20px;
-                    background-color: rgb(240, 240, 240);
-                    display: flex;
-                    flex-direction: column;
-                    border-top: 2px solid #624DE3;
-                    display: none;
-                    &.active{
-                        display: flex;
-                    }
-                    span{
-                        padding: 5px 10px;
-                        cursor: pointer;
-                        &:hover{
-                            background-color: rgb(220, 220, 220);
-                        }
-                    }
+                max-width: 135px;
+                svg{
+                    font-size: 22px;
                 }
             }
         }

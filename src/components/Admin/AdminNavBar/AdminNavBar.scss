@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Lumanosimo&display=swap');
+.admin-nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    position: sticky;
+    top: 0;
+    width: 120px;
+    box-shadow: -5px -5px 10px rgba(0,0,0,0.5);
+    h1{
+        color: black;
+        font-family: 'Lumanosimo', cursive;
+        position: absolute;
+        top: 30px;
+        transform: scaleX(0.8);
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        position: absolute;
+        bottom: 55%;
+        transform: translateY(50%);
+        li{
+            cursor: pointer;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            width: 100px;
+            height: 100px;
+            font-size: 12px;
+            text-align: center;
+            svg{
+                font-size: 24px;
+            }
+            &:hover{
+                color: rgba(8, 0, 255, 0.648);
+                transition: all 0.5s ease-in-out;
+            }
+        }
+    }
+    .logout{
+        position: absolute;
+        bottom: 50px;
+        background: none;
+        border: none;
+        outline: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        font-size: 12px;
+        cursor: pointer;
+        &:hover{
+            color: red;
+        }
+        svg{
+            font-size: 32px;
+        }
+
+    }
+}
+.admin-search{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 58px;
+    padding-right: 126px;
+    position: relative;
+    .app-name{
+        font-family: 'Dancing Script', cursive;
+        font-family: 'Lumanosimo', cursive;
+        font-weight: 700;
+        font-size: 26px;
+        transform: scaleX(0.8);
+        display: flex;
+        align-items: center;
+        span{
+            font-family: 'Dancing Script', cursive;
+            font-family: 'Lumanosimo', cursive;
+        }
+    }
+    .middle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        .entries{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 600;
+            // remove show 10 entries
+            display: none;
+            input{
+                background: #E0E0E0;
+                border: none;
+                outline: none;
+                padding: 10px;
+                border-radius: 8px;
+                font-weight: 600;
+                width: 50px;
+            }
+        }
+        .search-bar{
+            border: 1px solid #9E9E9E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 7px 10px;
+            border-radius: 8px;
+            width: 350px;
+            height: 42px;
+            button{
+                background: none;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                svg{
+                    font-size: 18px;
+                    color: #818181;
+                }
+            }
+            input{
+                border: none;
+                outline: none;
+                width: 100%;
+            }
+        }
+    }
+    .right{
+        display: flex;
+        gap: 20px;
+        cursor: pointer;
+        p{
+            background: rgba(0, 0, 255, 0.5);
+            padding: 7px 15px;
+            color: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: white;
+            svg{
+                // color: #D6A243;
+            }
+            &:hover{
+                transform: scale(0.9);
+                transition: all 0.2s ease-in-out;
+            }
+        }
+    }
+}
+.view-reports{
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    background-color: #d6a34340;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    svg{
+        background-color: #D6A243;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        padding: 10px;
+        color: white;
+    }
+    p{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease-in-out;
+        color: #d6a343;
+    }
+    &:hover{
+        p{
+            width: 140px;
+            height: 50px;
+        }
+    }
+}

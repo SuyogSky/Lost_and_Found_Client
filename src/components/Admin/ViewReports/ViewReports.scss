@@ -1,11 +1,11 @@
-.approved-items{
+.reports-view{
     display: flex;
     width: 100%;
     .content{
         width: 100%;
     }
 }
-.approved-item-details{
+.report-details{
     width: 100%;
     display: flex;
     align-items: center;
@@ -17,7 +17,7 @@
         border-collapse: collapse;
         th{
             text-align: start;
-            min-width: 50px;
+            min-width: 40px;
             height: 60px;
             font-weight: 600;
         }
@@ -29,8 +29,18 @@
         }
         td{
             height: 60px;
-            min-width: 50px;
+            min-width: 40px;
             border: none;
+            &.description{
+                max-width: 300px;
+                p{
+                    max-width: 300px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    padding: 5px 0;
+                    text-align: justify;
+                }
+            }
             .image{
                 height: 50px;
                 aspect-ratio: 5/4;
@@ -61,40 +71,17 @@
                 }
             }
             .claim-status{
-                background-color: #43d64340;
-                padding: 10px 15px;
+                background-color: #d6a34340;
+                padding: 10px 20px;
                 border-radius: 100px;
-                color: #43d643;
-                font-weight: 700;
+                color: #D6A243;
+                font-weight: 600;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                max-width: 140px;
+                max-width: 170px;
                 svg{
-                    font-size: 24px;
-                }
-            }
-            &.actions{
-                position: relative;
-                .options{
-                    position: absolute;
-                    left: 20px;
-                    top: 20px;
-                    background-color: rgb(240, 240, 240);
-                    display: flex;
-                    flex-direction: column;
-                    border-top: 2px solid #624DE3;
-                    display: none;
-                    &.active{
-                        display: flex;
-                    }
-                    span{
-                        padding: 5px 10px;
-                        cursor: pointer;
-                        &:hover{
-                            background-color: rgb(220, 220, 220);
-                        }
-                    }
+                    font-size: 22px;
                 }
             }
         }

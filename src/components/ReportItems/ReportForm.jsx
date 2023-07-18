@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './ClaimItemForm.scss';
+import './ReportForm.scss';
 import ip from '../../ip/ip'
 import { BsPerson } from 'react-icons/bs'
 import { TfiEmail } from 'react-icons/tfi'
@@ -7,11 +7,15 @@ import { HiOutlineLockClosed } from 'react-icons/hi'
 
 import Axios from "axios";
 
-const ClaimItemForm = ({item_id}) => {
+const ReportForm = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [otp, setOTP] = useState('')
-    const [wrongEmail, setWrongEmail] = useState('')
+    
+    const [itemName, setItemName] = useState('')
+    const [lostLocation, setLostLocation] = useState('')
+    const [description, setDescription] = useState('')
+
     const[verifying, setVerifying] = useState(false)
     const[reSend, setReSend] = useState(true)
 
@@ -23,16 +27,10 @@ const ClaimItemForm = ({item_id}) => {
             email: email,
             name: name
         }).then((response) =>{
-            if(response.data.success === 1){
-                setTimeout(()=>{
-                    setReSend(true)
-                }, 60000)
-                setWrongEmail('')
-            }
-            else{
-                setWrongEmail(response.data.message)
+            console.log(response)
+            setTimeout(()=>{
                 setReSend(true)
-            }
+            }, 60000)
         })
     }
     
@@ -40,11 +38,14 @@ const ClaimItemForm = ({item_id}) => {
     const verifyOTP = (e)=>{
         e.preventDefault()
         setVerifying(true)
-        Axios.post(`${ip()}/otp/verify`,{
+        Axios.post(`${ip()}/api/user/report`,{
+            name: name,
             email: email,
-            userName: name,
             otp: otp,
-            item_id: item_id
+            title: itemName,
+            lost_location: lostLocation,
+            description: description
+            // item_id: item_id
         }).then((response) =>{
             setVerifying(false)
             console.log(response.data)
@@ -60,12 +61,11 @@ const ClaimItemForm = ({item_id}) => {
 
 
     return (
-        <section className={`claim-item-form`}>
-            <div className="form-content">
-                <form action="" onSubmit={(e)=>verifyOTP(e)}>
-                    <h1>Please Verify Your Claim</h1>
+        <section className={`report-item-form`}>
+            <form action="" onSubmit={(e)=>verifyOTP(e)}>
+                <div className="user-details">
+                    <h2>Enter Your Details.</h2>
                     
-                    {/* <label htmlFor="name">Name:</label> */}
                     <div className="name">
                         <BsPerson/>
                         <input type="text" placeholder="Name" id="name" onChange={(e)=>setName(e.target.value)} required/>
@@ -83,15 +83,25 @@ const ClaimItemForm = ({item_id}) => {
                     </div>
                     {reSend?'':<p>Please wait 1 min to resend otp.</p>}
                     {errMsg?<p className="error">{errMsg}</p>:''}
-                    {wrongEmail?<p className="error">{wrongEmail}</p>:''}
-                    {verifying?<button className="loading submit">Verifying</button>:<button className="submit" type="submit">Submit</button>}
-                </form>
-                <div className="banner">
-                    <img src={require('../../assets/OTP.png')} alt=""/>
+                    {verifying?<button className="loading submit submit1">Verifying</button>:<button className="submit submit1" type="submit">Submit</button>}
                 </div>
-            </div>
+
+                <div className="item-details">
+                    <h2>Item Details</h2>
+                    <div className="item-name">
+                        <input type="text" placeholder="Item Name" id="name" onChange={(e)=>setItemName(e.target.value)} required/>
+                    </div>
+                    <div className="lost-location">
+                        <input type="text" placeholder="Lost Location" id="location" onChange={(e)=>setLostLocation(e.target.value)} required/>
+                    </div>
+                    <div className="description">
+                        <textarea placeholder="Item Description" id="description" onChange={(e)=>setDescription(e.target.value)} required maxlength='200'></textarea>
+                    </div>
+                    {verifying?<button className="loading submit submit2">Verifying</button>:<button className="submit submit2" type="submit">Submit</button>}
+                </div>
+            </form>
         </section>
     )
 }
 
-export default ClaimItemForm
+export default ReportForm

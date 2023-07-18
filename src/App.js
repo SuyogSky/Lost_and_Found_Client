@@ -9,19 +9,27 @@ import ViewClaimed from "./components/Admin/ViewClaimed/ViewClaimed";
 import ApprovedItems from "./components/Admin/ApprovedItems/ApprovedItems";
 import RejectedItems from "./components/Admin/ViewRejected/RejectedItems";
 import './components/Admin/AdminNavBar.scss'
+import ViewReports from "./components/Admin/ViewReports/ViewReports";
+import AdminLogin from "./components/Admin/AdminLogin/AdminLogin";
 
 const App = () => {
+  const win = sessionStorage;
+  const token = win.getItem('token')
   return(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Items/>}></Route>
         <Route path="/claim-item-form" element={<ClaimItemForm/>}></Route>
 
-        <Route path="/admin-page" element={<AdminDashboard/>}></Route>
-        <Route path="/add-items-page" element={<AddItems/>}></Route>
-        <Route path="/view-claimed-items" element={<ViewClaimed/>}></Route>
-        <Route path="/view-approved-items" element={<ApprovedItems/>}></Route>
-        <Route path="/view-rejected-items" element={<RejectedItems/>}></Route>
+        {/* Admin page */}
+        <Route path="/admin-page" element={token?<AdminDashboard/>:<AdminLogin/>}></Route>
+        <Route path="/add-items-page" element={token?<AddItems/>:<AdminLogin/>}></Route>
+        <Route path="/view-claimed-items" element={token?<ViewClaimed/>:<AdminLogin/>}></Route>
+        <Route path="/view-approved-items" element={token?<ApprovedItems/>:<AdminLogin/>}></Route>
+        <Route path="/view-rejected-items" element={token?<RejectedItems/>:<AdminLogin/>}></Route>
+        <Route path="/view-reports" element={token?<ViewReports/>:<AdminLogin/>}></Route>
+
+        <Route path="/admin-login" element={token?<AdminDashboard/>:<AdminLogin/>}></Route>
       </Routes>
     </BrowserRouter>
   )

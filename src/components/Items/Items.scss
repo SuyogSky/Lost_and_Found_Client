@@ -6,6 +6,10 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    @media (max-width: 762px) {
+        padding: 30px 8%;
+        gap: 20px;
+    }
     h1{
         color: var(--mainColor);
         font-size: 32px;
@@ -16,18 +20,53 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        span{
+        @media (max-width: 762px) {
+            margin-bottom: 20px;
+        }
+        @media (max-width: 460px) {
+            margin-bottom: 10px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .filter{
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            position: relative;
             cursor: pointer;
-            p{
-                font-size: 18px;
+            .button{
+                display: flex;
+                gap: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                p{
+                    font-size: 18px;
+                }
+                svg{
+                    color: var(--mainColor);
+                    font-size: 24px;
+                }
             }
-            svg{
-                color: var(--mainColor);
-                font-size: 24px;
+            .options{
+                position: absolute;
+                right: calc(-100% - 25px);
+                background-color: rgba(0,0,0,0.05);
+                transform: translateX(-120%) scale(0);
+                opacity: 0;
+                transition: all 0.5s ease-in-out;
+                &.active{
+                    transform: translate(0) scale(1);
+                    opacity: 1;
+                }
+                p{
+                    padding: 5px 10px;
+                    &:hover{
+                        background-color: rgba(0,0,0,0.05);
+                    }
+                }
             }
         }
         .search-bar{
@@ -38,6 +77,9 @@
             overflow: hidden;
             border-radius: 8px;
             border: 1px solid rgba(0,0,0,0.5);
+            @media (max-width: 762px) {
+                height: 35px;
+            }
             input{
                 width: 100%;
                 font-size: 16px;
@@ -59,6 +101,13 @@
                 color: white;
                 font-weight: 500;
                 cursor: pointer;
+                @media (max-width: 762px) {
+                    width: auto;
+                    padding: 0 15px;
+                    p{
+                        display: none;
+                    }
+                }
                 svg{
                     font-size: 24px;
                 }
@@ -68,8 +117,10 @@
     }
     .items{
         width: 100%;
+        display: flex;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+        grid-template-columns: repeat(auto-fill, minmax(280px, auto));
+        flex-flow: wrap;
         gap: 40px;
         .item{
             overflow: hidden;
@@ -77,17 +128,25 @@
             background-color: rgba(0,0,0,0.05);
             .item-image{
                 width: 100%;
-                max-height: 250px;
-                background-color: red;
+                // height: 230px;
+                aspect-ratio: 5/3;
+                background-color: rgba(0,0,0,0.05);
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
                 cursor: pointer;
-                img{
-                    width: 100%;
-                    min-width: 300px;
-                }
+                // object-fit: cover;
+                // background-image: url('../../assets//items/Naruto.jpg');
+                background-size: cover;
+                background-position: center;
+                // img{
+                //     object-fit: cover;
+                //     aspect-ratio: 3/2;
+                //     width: 100%;
+                //     height: 100%;
+                //     min-width: 250px;
+                // }
             }
             .item-info{
                 width: 100%;
@@ -95,12 +154,16 @@
                 h4{
                     color: var(--mainColor);
                     font-size: 20px;
-                    padding: 10px 0;
+                    padding-top: 15px;
+                    padding-bottom: 5px;
                 }
                 p{
                     font-size: 14px;
                     padding: 2px 0;
-                    font-weight: 600;
+                    span{
+                        font-weight: 600;
+                        margin-right: 5px;
+                    }
                 }
             }
             button{
@@ -118,24 +181,98 @@
         }
     }
 }
+.report-items{
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    background-color: rgba(179, 0, 255, 0.584);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    svg{
+        background-color: #8c2de2;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        padding: 10px;
+        color: white;
+    }
+    p{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease-in-out;
+        color: white;
+    }
+    &:hover{
+        p{
+            width: 140px;
+            height: 50px;
+        }
+    }
+}
 .claim-form{
     position: fixed;
-    bottom: -100%;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
     &.active{
-        bottom: 0;
+        opacity: 1;
+        transform: scale(1);
     }
     .cancle{
         position: absolute;
-        top: 50px;
-        right: 50px;
+        top: 40px;
+        right: 6%;
         background: none;
         color: white;
-        font-size: 32px;
+        font-size: 28px;
         border: none;
         cursor: pointer;
+        outline: none;
+    }
+}
+
+.report-form{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+    &.active{
+        opacity: 1;
+        transform: scale(1);
+    }
+    .cancle{
+        position: absolute;
+        top: 40px;
+        right: 6%;
+        background: none;
+        color: white;
+        color: rgba(255, 0, 0, 0.5);
+        font-size: 28px;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        @media (max-width: 400px) {
+            color: rgba(0,0,0,0.5);
+        }
     }
 }
